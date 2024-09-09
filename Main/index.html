@@ -14,9 +14,10 @@
   <div id="bankAppContainer" ng-controller="balancesController">
     <ul>
       <!--iterate through user collections--> 
-      <li> 
+      <li ng-repeat="user in users | orderBy: 'balance'"
         <div class="user-info">
-          
+          <span>{{user.name}}</span>
+          <span>{{user.balance | currency}}</span>
         </div>
         <div class="user-actions">
         <!--delete and edit-->
@@ -26,7 +27,9 @@
     </ul>
 
     <div id="currentUserSection">
-      
+      <input type="text" id="name" ng-model="current.name" placeholder="Name"
+      <input type="text" id="balance" ng-model="current.balance" placeholder="Balance"
+      <button ng-click="save(current)">Save changes</button>  
     </div>
 
     <div id="addNewUserSection">
